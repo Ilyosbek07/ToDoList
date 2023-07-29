@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # Packages
     'rest_framework',
-    'movie'
+    'to_do'
 ]
 
 MIDDLEWARE = [

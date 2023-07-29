@@ -1,21 +1,21 @@
 from rest_framework import serializers
 
-from movie.models import Movie
+from to_do.models import ToDoList
 
 
-class MovieSerializer(serializers.Serializer):
+class ToDoListSerializer(serializers.Serializer):
     id = serializers.CharField(read_only=True)
-    name = serializers.CharField()
+    title = serializers.CharField()
     desc = serializers.CharField()
-    is_active = serializers.BooleanField()
+    which_day = serializers.DateField()
 
     def create(self, validated_data):
-        return Movie.objects.create(**validated_data)
+        return ToDoList.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
+        instance.title = validated_data.get('title', instance.title)
         instance.desc = validated_data.get('desc', instance.desc)
-        instance.is_active = validated_data.get('is_active', instance.is_active)
+        instance.which_day = validated_data.get('which_day', instance.which_day)
         instance.save()
 
         return instance
